@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from pytest_bdd import scenario, given, when, then
 from selenium import webdriver
@@ -45,4 +47,6 @@ def login(driver):
 def verify(driver):
     loginpage = LoginPage(driver)
     title = loginpage.get_title()
+    time.sleep(10)
     assert title == 'Swag Labs'
+status
