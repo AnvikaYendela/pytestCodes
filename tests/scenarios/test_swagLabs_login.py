@@ -49,4 +49,3 @@ def verify(driver):
     title = loginpage.get_title()
     time.sleep(10)
     assert title == 'Swag Labs'
-status
