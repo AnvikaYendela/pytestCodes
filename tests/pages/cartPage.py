@@ -3,13 +3,14 @@ from pytestBDDDemo.locators import locators
 
 
 class CartPage(BasePage):
-    """Page contains methods to log in to application by entering valid username and password"""
+    """Page contains methods to get product lists"""
 
     def __int__(self, driver):
         self.driver = driver
         super.__init__(self.driver)
 
     def getProducts(self):
+        """Method returns the products list from cart page"""
         price = self.driver.find_elements(*locators.CartPageLocators.price)
         qty = self.driver.find_elements(*locators.CartPageLocators.qty)
         product = self.driver.find_elements(*locators.CartPageLocators.product_name)
@@ -27,4 +28,5 @@ class CartPage(BasePage):
         return product_list
 
     def check_out(self):
+        """Method click on checkout button"""
         self.click(locator=locators.CartPageLocators.checkout)

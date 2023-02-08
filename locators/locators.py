@@ -35,12 +35,9 @@ class ChekoutInfoPageLocators(object):
     continue_button = (By.ID, 'continue')
     error = (By.CSS_SELECTOR, 'h3[data-test="error"]')
 
+
 class CheckoutOverviewPageLocators(object):
     finish_button = (By.ID, 'finish')
     successful_text = (By.CSS_SELECTOR, 'h2.complete-header')
     quantity = (By.CSS_SELECTOR, 'div.cart_item div.cart_quantity')
     total_price = (By.CSS_SELECTOR, 'div.summary_info div.summary_subtotal_label')
-
-
-
-

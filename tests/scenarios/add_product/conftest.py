@@ -17,8 +17,8 @@ def context():
 def add_products(driver):
     products_page = ProductsPage(driver)
     products_page.addProducts()
-    cartPage = CartPage(driver)
-    products_list = cartPage.getProducts()
+    cart_page = CartPage(driver)
+    products_list = cart_page.getProducts()
     for x in products_list:
         for values in x.values():
             print(values)
@@ -93,7 +93,7 @@ def finish(driver):
     checkout_page = CheckoutPage(driver)
     get_product_info = checkout_page.getProductsInfo()
     total_sum = float(SAUCE_LABS_BIKE[0].replace('$', '')) + float(SAUCE_LABS_BACKPACK[0].replace('$', ''))
-    sum = 0
+    total_budget = 0
     for x in get_product_info:
         for values in x.values():
             sum += float(values[0].replace('$', ''))
@@ -102,7 +102,7 @@ def finish(driver):
             else:
                 assert values == SAUCE_LABS_BACKPACK
     time.sleep(1)
-    assert sum == total_sum
+    assert total_budget == total_sum
 
 
 @then('User should be placed order successfully')
@@ -117,6 +117,6 @@ def order_placed(driver):
 @then('User removes products from cart page')
 def removed_products(driver):
     products_page = ProductsPage(driver)
-    len = products_page.remove_products()
+    product_count = products_page.remove_products()
     time.sleep(1)
-    assert len == 0
+    assert product_count == 0
