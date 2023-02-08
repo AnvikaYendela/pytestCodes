@@ -15,6 +15,12 @@ class BasePage:
         element = self.driver.find_element(*locator)
         element.send_keys(value)
 
+    def get_text(self, locator):
+        """This method allows user to get text in a field"""
+
+        element = self.driver.find_element(*locator)
+        element.text
+
     def click(self, locator):
         """This method allows user to perform click operation"""
 
@@ -29,11 +35,11 @@ class LoginPage(BasePage):
         self.driver = driver
         super.__init__(self.driver)
 
-    def enter_credentials(self):
+    def enter_credentials(self, username, password):
         """Enter credentials like username and password"""
 
-        self.send_keys(USERNAME, locator=locators.LoginPageLocators.user_name)
-        self.send_keys(PASSWORD, locator=locators.LoginPageLocators.password)
+        self.send_keys(username, locator=locators.LoginPageLocators.user_name)
+        self.send_keys(password, locator=locators.LoginPageLocators.password)
 
     def login(self):
         """Click on Login button"""

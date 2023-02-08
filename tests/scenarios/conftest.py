@@ -1,21 +1,15 @@
-import time
-
 import pytest
-from pytest_bdd import scenario, given, when, then
+from pytest_bdd import given, when, parsers
 from selenium import webdriver
-from pytestBDDDemo.tests.utils.constants import PASSWORD, SWAGLABS_URL, USERNAME
 from pytestBDDDemo.tests.pages.loginPage import LoginPage
+import time
+from pytestBDDDemo.tests.utils.constants import PASSWORD, SWAGLABS_URL, USERNAME
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='module')
 def driver():
     driver = webdriver.Chrome()
     return driver
-
-
-@scenario('../features/swaglabslogin.feature', 'Verify User navigated to products page after successful login')
-def test_login():
-    pass
 
 
 @given('User loads the swag labs url')
@@ -30,22 +24,24 @@ def user_credentials():
     print("password", PASSWORD)
 
 
-@when('User enters the username and password')
-def enter_credentials(driver):
+@when(parsers.parse("User enters the {username} and {password}"))
+def enter_credentials(driver, username, password):
     driver.get(SWAGLABS_URL)
-    loginpage = LoginPage(driver)
-    loginpage.enter_credentials()
+    login_page = LoginPage(driver)
+    login_page.enter_credentials(username, password)
+    time.sleep(1)
 
 
 @when('User clicks on the login button')
 def login(driver):
-    loginpage = LoginPage(driver)
-    loginpage.login()
+    login_page = LoginPage(driver)
+    login_page.login()
+    time.sleep(1)
 
 
-@then('User should be logged in successfully')
+@when('User should be logged in successfully')
 def verify(driver):
     loginpage = LoginPage(driver)
     title = loginpage.get_title()
-    time.sleep(10)
+    time.sleep(1)
     assert title == 'Swag Labs'

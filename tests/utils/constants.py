@@ -1,3 +1,12 @@
 SWAGLABS_URL = 'https://www.saucedemo.com/'
 USERNAME = 'standard_user'
 PASSWORD = 'secret_sauce'
+TITLE = 'Swag Labs'
+SAUCE_LABS_BIKE = ['$9.99', '1', 'Sauce Labs Bike Light']
+SAUCE_LABS_BACKPACK = ['$29.99', '1', 'Sauce Labs Backpack']
+FIRSTNAME = 'Anvika'
+LASTNAME = 'Yendela'
+ZIP = '1002'
+ITEMS = ['Sauce Labs Backpack', 'Sauce Labs Bike Light']
+PRODUCTNAME = 'Sauce Labs Bike Lights'
+ERROR = 'Error: First Name is required'
