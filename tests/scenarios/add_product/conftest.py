@@ -29,7 +29,7 @@ def add_products(driver):
     time.sleep(1)
 
 
-@when('User adds products to the cart, click on cart button')
+@when('User adds products to the cart and click on cart button')
 def add_products(driver):
     products_page = ProductsPage(driver)
     products_page.add_products(ITEMS)
@@ -46,7 +46,7 @@ def search_products(driver, context):
     return context
 
 
-@when('User clicks on checkout button , clicks on finish button')
+@when('User clicks on checkout button and clicks on finish button')
 def check_finish(driver):
     cartPage = CartPage(driver)
     cartPage.check_out()
@@ -114,9 +114,14 @@ def order_placed(driver):
     assert checkout_page.get_success_message() == "THANK YOU FOR YOUR ORDER"
 
 
-@then('User removes products from cart page')
+@when('User removes products from cart page')
 def removed_products(driver):
     products_page = ProductsPage(driver)
-    product_count = products_page.remove_products()
-    time.sleep(1)
-    assert product_count == 0
+    products_page.remove_products()
+
+
+@then('User should found no products')
+def verify_products(driver):
+    products_page = ProductsPage(driver)
+    count_products = products_page.count_products()
+    assert count_products == 0

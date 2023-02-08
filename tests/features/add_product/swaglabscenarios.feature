@@ -8,8 +8,9 @@ Feature: login to swag labs application and place the order
     When User enters the <username> and <password>
     And User clicks on the login button
     And User should be logged in successfully
-    And User adds products to the cart, click on cart button
-    Then User removes products from cart page
+    And User adds products to the cart and click on cart button
+    And User removes products from cart page
+    Then User should found no products
 
     Examples:
     | username | password |
@@ -32,8 +33,8 @@ Feature: login to swag labs application and place the order
     When User enters the <username> and <password>
     And User clicks on the login button
     And User should be logged in successfully
-    And User adds products to the cart, click on cart button
-    And User clicks on checkout button , clicks on finish button
+    And User adds products to the cart and click on cart button
+    And User clicks on checkout button and clicks on finish button
     Then User should not proceed to checkout page
 
   Examples:

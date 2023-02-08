@@ -33,6 +33,8 @@ class ProductsPage(BasePage):
         txt = self.driver.find_elements(*locators.ProductPageLocators.remove_product)
         for i in range(len(txt)):
                 txt[i].click()
+
+    def count_products(self):
         return len(self.driver.find_elements(*locators.ProductPageLocators.products))
 
     def search_product(self, items):
